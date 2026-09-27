@@ -1,0 +1,30 @@
+# Git history
+.git/
+.gitignore
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Frontend build artefacts — not needed by the C backend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Environment files with real secrets
+.env
+
+# Pre-built C object files and binaries (rebuilt inside the container)
+backend/src/*.o
+backend/vendor/cjson/*.o
+backend/bin/
+
+# Editor / IDE directories
+.vscode/
+.idea/
+
+# Replit configuration
+.replit
+
+# Bob IDE configuration (not needed in the container)
+.bob/
