@@ -1,0 +1,231 @@
+/* ── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Design tokens ────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg:          #F7F6F2;
+  --surface:     #FFFFFF;
+  --surface-dim: #F0EEE8;
+
+  /* Borders */
+  --border:      #D9DDD7;
+  --border-dim:  #E8EBE6;
+
+  /* Text */
+  --text:        #1F2421;
+  --text-2:      #66706A;
+  --text-3:      #9BA49E;
+
+  /* Brand */
+  --green:       #2F6B4F;
+  --green-dark:  #183C2A;
+  --green-tint:  #EBF4EF;
+  --green-mid:   #C5DDD0;
+
+  /* Accent */
+  --amber:       #C4773B;
+  --amber-tint:  #FBF3EC;
+
+  /* Semantic */
+  --error:       #B91C1C;
+  --error-tint:  #FEF2F2;
+  --error-border:#FECACA;
+
+  /* Type */
+  --font:        'Inter', -apple-system, system-ui, sans-serif;
+  --mono:        'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+  /* Radii */
+  --r:           6px;
+  --r-lg:        8px;
+
+  /* Transitions */
+  --ease:        150ms ease;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+html  { font-size: 14px; scroll-behavior: smooth; }
+
+body  {
+  font-family: var(--font);
+  background:  var(--bg);
+  color:       var(--text);
+  line-height: 1.6;
+  min-height:  100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── Typography ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5 { font-weight: 600; line-height: 1.25; color: var(--text); }
+h1 { font-size: 1.85rem; letter-spacing: -0.025em; }
+h2 { font-size: 1.25rem; letter-spacing: -0.015em; }
+h3 { font-size: 1rem;    letter-spacing: -0.01em;  }
+h4 { font-size: 0.875rem; }
+
+p  { color: var(--text-2); line-height: 1.7; }
+
+a  { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.82em;
+  background: var(--surface-dim);
+  border: 1px solid var(--border-dim);
+  padding: 0 4px;
+  border-radius: 3px;
+  color: var(--text);
+}
+
+pre { font-family: var(--mono); }
+
+/* ── Layout helpers ───────────────────────────────────────── */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ── Divider ──────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem 0;
+}
+
+/* ── Section heading ──────────────────────────────────────── */
+.sec-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Surface / panel ──────────────────────────────────────── */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--r);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background var(--ease), color var(--ease), border-color var(--ease);
+  border: 1px solid transparent;
+  outline: none;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+}
+.btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text-2);
+  border-color: var(--border);
+}
+.btn-secondary:hover { background: var(--surface-dim); color: var(--text); }
+
+.btn-full { width: 100%; padding: 0.625rem 1rem; font-size: 0.9rem; }
+
+/* ── Form ─────────────────────────────────────────────────── */
+.field { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.field-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+}
+
+.field-input,
+.field-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  outline: none;
+  appearance: none;
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+.field-input::placeholder { color: var(--text-3); font-family: var(--mono); font-size: 0.8rem; }
+.field-input:focus,
+.field-select:focus       { border-color: var(--green); box-shadow: 0 0 0 2px var(--green-tint); }
+.field-input.error        { border-color: var(--error); }
+
+.field-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%2366706A' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  padding-right: 2rem;
+}
+
+.field-error { font-size: 0.75rem; color: var(--error); }
+
+/* ── Badge ────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  html { font-size: 13.5px; }
+  h1   { font-size: 1.5rem; }
+  .container { padding: 0 1rem; }
+}

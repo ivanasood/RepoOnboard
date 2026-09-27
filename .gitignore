@@ -1,0 +1,5 @@
+.env
+*.o
+backend/bin/
+core
+*.log

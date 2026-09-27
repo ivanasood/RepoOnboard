@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "repoonboard": {
+      "command": "${workspaceFolder}/backend/bin/repoonboard-mcp",
+      "cwd": "${workspaceFolder}",
+      "alwaysAllow": [
+        "analyze_github_repository"
+      ],
+      "disabled": false
+    }
+  }
+}
